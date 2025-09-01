@@ -13,6 +13,7 @@ func _ready() -> void:
 	state_manager.state_changed.connect(sprite.play_animation)
 	state_manager.state_changed.connect(sprite.squash_and_stretch)
 	controller.on_attack.connect(attack)
+	controller.on_jump.connect(jump)
 
 func get_state():
 	if velocity.y >= 0 and not is_on_floor():
@@ -31,13 +32,13 @@ func movement(delta: float):
 	velocity.x = move_toward(velocity.x, movement_input * speed, acceleration * delta)
 
 func jump():
-	if controller.is_jumping_input() and is_on_floor():
+	if is_on_floor():
 		velocity.y = - jump_height
 
 func gravity(delta: float):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
-	else:
+	elif velocity.y > 0:
 		velocity.y = 0
 
 func attack():
@@ -47,6 +48,5 @@ func _physics_process(delta: float) -> void:
 	state_manager.state = get_state()
 	movement(delta)
 	gravity(delta)
-	jump()
 	sprite.flip_sprite(controller.get_horizontal_input())
 	move_and_slide()
