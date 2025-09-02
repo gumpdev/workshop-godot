@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://bx041k4tfk3tl"]
 
-[ext_resource type="Script" uid="uid://1yn2t5lae7qr" path="res://scripts/player.gd" id="1_mvpqy"]
+[ext_resource type="Script" uid="uid://1yn2t5lae7qr" path="res://scripts/player/player.gd" id="1_mvpqy"]
 [ext_resource type="Texture2D" uid="uid://utcw5uajwhq" path="res://sprites/Personagem-Sheet.png" id="1_niuxy"]
-[ext_resource type="Script" uid="uid://2dfdkjc0bh0k" path="res://scripts/player_state.gd" id="3_1yqc4"]
-[ext_resource type="Script" uid="uid://blxt66saxadav" path="res://scripts/player_sprite.gd" id="3_esgq3"]
-[ext_resource type="Script" uid="uid://dkxiugmjkm3v7" path="res://scripts/controller.gd" id="5_kjkj0"]
+[ext_resource type="Script" uid="uid://2dfdkjc0bh0k" path="res://scripts/player/player_state.gd" id="3_1yqc4"]
+[ext_resource type="Script" uid="uid://blxt66saxadav" path="res://scripts/player/player_sprite.gd" id="3_esgq3"]
+[ext_resource type="Script" uid="uid://dkxiugmjkm3v7" path="res://scripts/player/player_controller.gd" id="5_kjkj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvpqy"]
 atlas = ExtResource("1_niuxy")
@@ -128,6 +128,7 @@ radius = 4.0
 height = 22.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 3
 script = ExtResource("1_mvpqy")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
