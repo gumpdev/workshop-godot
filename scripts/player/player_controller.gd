@@ -6,7 +6,7 @@ signal on_jump()
 func get_horizontal_input():
 	return Input.get_axis("left", "right")
 
-func _physics_process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack"):
 		on_attack.emit()
 
